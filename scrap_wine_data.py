@@ -65,7 +65,7 @@ if __name__ == '__main__':
         data['wines'] = []
         data['price'] = []
         data['year'] = []
-        data[reviews] = []
+        data['reviews'] = []
         
         # Adds the page to the payload
         payload['page'] = i
@@ -81,7 +81,7 @@ if __name__ == '__main__':
             # Gathers the wine-based data
             wine = match['vintage']['wine']
             price = match['price']['amount']
-            year = match['vintage]['year']
+            year = match['vintage']['year']
 
             # Popping redundant values
             if wine['style']:
@@ -104,7 +104,7 @@ if __name__ == '__main__':
             # Gathers the reviews from current match
             res = r.get(f'wines/{wine["id"]}/reviews')
             reviews = res.json()
-            data[reviews] = reviews['reviews']
+            data['reviews'] = reviews['reviews']
 
             # Opens the output .json file
             with open(f'{i}_{output_file}', 'w') as f:
